@@ -1,13 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 import psycopg2
 
 connection =psycopg2.connect(
     dbname = "projectdb",
     user = "postgres",
-    password="",
+    password="32081ABc",
     host="localhost",
     port = "5432"
 )
+
 class User:
     def __init__(self, username, role):
         self.username = username
@@ -15,14 +16,13 @@ class User:
 
 cursor = connection.cursor()
 app = Flask(__name__)
+
 def insert_to_db():
     text = "Lorem ipsum"
     cursor.execute("INSERT INTO Posts(name, text, author) VALUES(%s, %s, %s);", ("Пост1", text, "admin"))
     cursor.execute("SELECT * FROM Posts;")
     rows = cursor.fetchall()
-    for row in rows:
-        for i in row:
-            print(i);
+    
 @app.route('/home')
 def home():
     return render_template('index.html')
@@ -32,6 +32,7 @@ def chat():
 @app.route('/login')
 def login():
     return render_template('login.html')
+
 @app.route('/admin')
 def admin():
     return render_template('admin.html')
@@ -41,6 +42,18 @@ def calendar():
 @app.route('/articles')
 def articles():
     return render_template('articles.html', text = text, header = "Заголовок")
+
+@app.route('/login', methods = ['POST'])
+def post_login():
+    username = request.form.get('username')
+    user = User(username, "user")
+    password = request.form.get('password')
+    if not username or not password:
+        return jsonify({"error": "Missing username or password"}), 400
+    return "Готово "
+
+def login():
+    return render_template('login.html')
 # http://127.0.0.1:5000/home
 
 if __name__ == '__main__':  
