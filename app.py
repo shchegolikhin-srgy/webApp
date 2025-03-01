@@ -4,7 +4,7 @@ import psycopg2
 connection =psycopg2.connect(
     dbname = "projectdb",
     user = "postgres",
-    password="",
+    password="32081ABc",
     host="localhost",
     port = "5432"
 )
@@ -16,7 +16,18 @@ class User:
 
 cursor = connection.cursor()
 app = Flask(__name__)
-
+def auth(username, password):
+    print("результат")
+    cursor.execute("SELECT username, password FROM Users WHERE username ='%s';" % (username))
+    row = cursor.fetchone()
+    if row:
+        if row[1] == password:
+            user = User(username, "user")
+            return "authorization completed"
+        else:
+            return "authorization failed: incorrect password"
+    else:
+        return "the user does not exist"
 def insert_to_db():
     text = "Lorem ipsum"
     cursor.execute("INSERT INTO Posts(name, text, author) VALUES(%s, %s, %s);", ("Пост1", text, "admin"))
@@ -44,14 +55,15 @@ def articles():
     return render_template('articles.html', text = text, header = "Заголовок")
 
 @app.route('/login', methods = ['POST'])
-def post_login():
+def login_post():
     username = request.form.get('username')
-    user = User(username, "user")
     password = request.form.get('password')
     if not username or not password:
         return jsonify({"error": "Missing username or password"}), 400
-    return "Готово "
-
+    if auth(username, password) == "authorization completed":
+        return render_template("index.html")
+    else:
+        return "Нету пользователя"
 def login():
     return render_template('login.html')
 # http://127.0.0.1:5000/home
