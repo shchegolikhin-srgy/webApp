@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+        }
+        nav {
+            background-color: #292929;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #bb86fc;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            width: 100%;
+            background-color: #1f1f1f;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+
+        form h2 {
+            margin-top: 0;
+            font-size: 1.8em;
+            color: #bb86fc;
+            text-align: center;
+        }
+
+        form div {
+            margin-bottom: 15px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+            color: white;
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #292929;
+            color: #e0e0e0;
+            font-size: 0.9em;
+        }
+
+        form input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(187, 134, 252, 0.5);
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #bb86fc;
+            border: none;
+            border-radius: 5px;
+            color: #121212;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #9c64f7;
+        }
+
+        .admin-link {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .admin-link a {
+            color: #bb86fc;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .admin-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body style="background-image: url('background.png'); background-size: cover;">
+    <header>
+        <h1>Авторизация</h1>
+    </header>
+
+    <nav>
+        <a href="home">Главная</a>
+    </nav>
+
+    <main>
+        <form>
+            <h2>Вход</h2>
+            <div>
+                <label for="username">Имя пользователя</label>
+                <input type="text" id="username" placeholder="Введите имя пользователя">
+            </div>
+            <div>
+                <label for="password">Пароль</label>
+                <input type="password" id="password" placeholder="Введите пароль">
+            </div>
+            <button type="submit">Войти</button>
+        </form>
+        <div class="admin-link">
+            <a href="#">Войти как администратор</a>
+        </div>
+    </main>
+</body>
+</html>
