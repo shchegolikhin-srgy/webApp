@@ -4,111 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1523</title>
-    <style>
-       body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            text-align: center;
-        }
-        h2{
-            text-align: center;
-        }  
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 2px;
-        }
-        nav {
-            background-color: #292929;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        nav a:hover {
-    color: #bb86fc;
-}
-main {
-    padding: 20px;
-}
-    article {
-    width: 65%;
-    place-items: center;
-    background-color: #1f1f1f;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 15px;
-    margin: auto;
-    
-}
-article h2 {
-    margin-top: 0;
-    font-size: 1.8em;
-}
-article p {
-    line-height: 1.6;
-}
-footer {
-    background-color: #1f1f1f;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-article:hover{
-    border: 1px solid; 
-    border-color: rgb(255, 255, 255);
-        color: darkgrey;
-    }
-        
-        #addNewsForm{
-            place-items: center;
-            margin: auto;
-            display: none;
-            background-color: #1f1f1f;
-            border-radius: 5px;
-            padding: 30px;
-            width: 63%;
-            height: 300px;
-        } 
-        #addNewsForm h2{
-            margin-top: 0;
-            font-size: 1.8em;
-            text-align: center;
-        }
-        #addNewsForm input[type="text"]{
-            width: 95%;
-            padding: 10px;
-            margin: 10px;
-            height: auto;
-            border: 1px solid #757575;
-            border-radius: 4px;
-            background-color: #333;
-            color: #e0e0e0;
-        }
-        #addNewsForm button[type = "submit"]{
-            width: 50%;
-            padding: 10px;
-            background-color: hsl(121, 90%, 29%);
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body style="background-image: url('background.png'); background-size: cover;">
+<body>
     <header>
         <h1>Новостной Сайт</h1>
     </header>
@@ -116,11 +14,11 @@ article:hover{
         <a href="home">Главная</a>
     </nav>
     <main>
-        <h1 style = "text-align: center;">Здравтвуйте, "Админ"!</h1>
+        <h1 style="text-align: center;">Здравствуйте, "Админ"!</h1>
         <article>
             <p onclick="showAddNews()">Добавить новость</p>
         </article>
-        <form action="http://localhost:3000/submit" method="post" id = "addNewsForm">
+        <form action="http://localhost:3000/submit" method="post" id="addNewsForm">
             <input type="text" placeholder="Введите пост" required id="story">
         </form>
         <h2>Написанные новости</h2>
@@ -133,18 +31,9 @@ article:hover{
             <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam ut sem non erat convallis egestas nec non erat. Ut a mauris posuere, ornare neque in, hendrerit ex. Mauris et dui aliquam, dignissim ligula at, tincidunt elit. Ut quis velit tincidunt, malesuada odio at, lobortis dui. Sed feugiat id purus et tincidunt. Mauris eget metus tellus.</p>
         </article>
     </main>
-    <footer style="font-size: larger; color: rgb(253, 255, 250); text-align: center;">
+    <footer>
         1523
     </footer>
-    <script>  
-        function showAddNews(){
-            const addNewsBlock = document.getElementById('addNewsForm');
-            addNewsBlock.style.display ='block';
-        }
-        function removeAddNews(){
-            const addNewsBlock = document.getElementById('addNewsForm');
-            addNewsBlock.style.display ='none';
-        }
-    </script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>

@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 import psycopg2
 
 connection =psycopg2.connect(
     dbname = "projectdb",
     user = "postgres",
-    password="",
+    password="32081ABc",
     host="localhost",
     port = "5432"
 )
@@ -28,8 +28,9 @@ def auth(username, password):
             return "authorization failed: incorrect password"
     else:
         return "the user does not exist"
+text = "Loren ipsum"
 def insert_to_db():
-    text = "Lorem ipsum"
+    
     cursor.execute("INSERT INTO Posts(name, text, author) VALUES(%s, %s, %s);", ("Пост1", text, "admin"))
     cursor.execute("SELECT * FROM Posts;")
     rows = cursor.fetchall()
@@ -40,8 +41,22 @@ def home():
 @app.route('/chat')
 def chat():
     return render_template('chat.html')
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if not username or not password:
+            return jsonify({"error": "Missing username or password"}), 400
+            
+        auth_result = auth(username, password)
+        
+        if auth_result == "admin":
+            return redirect(url_for('admin'))
+        elif auth_result == "authorization completed":
+            return render_template("index.html")
+        else:
+            return "Нету пользователя"
     return render_template('login.html')
 
 @app.route('/admin')
@@ -52,20 +67,11 @@ def calendar():
     return render_template('calendar.html')
 @app.route('/articles')
 def articles():
-    return render_template('articles.html', text = text, header = "Заголовок")
+    name = "post 1"
+    cursor.execute("SELECT name, text, author FROM Posts WHERE name ='%s';" % (name))
+    row = cursor.fetchone()
+    return render_template('articles.html', text = row[1], header = row[0])
 
-@app.route('/login', methods = ['POST'])
-def login_post():
-    username = request.form.get('username')
-    password = request.form.get('password')
-    if not username or not password:
-        return jsonify({"error": "Missing username or password"}), 400
-    if auth(username, password) == "authorization completed":
-        return render_template("index.html")
-    else:
-        return "Нету пользователя"
-def login():
-    return render_template('login.html')
 # http://127.0.0.1:5000/home
 
 if __name__ == '__main__':  

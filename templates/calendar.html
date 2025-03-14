@@ -4,84 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Расписание уроков</title>
-    <style>
-         header {
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 2px;
-        }
-        nav {
-            background-color: #292929;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #bb86fc;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-.schedule-container {
-    margin: auto;
-    background-color: #1f1f1f;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 900px; 
-    
-}
-.schedule-container h2 {
-    text-align: center; 
-    margin-bottom: 20px;
-    
-    color: white;
-}
-
-.schedule-table {
-    width: 100%;
-    border-collapse: collapse; 
-    margin-top: 10px;
-}
-
-.schedule-table td {
-    padding: 10px;
-    text-align: center; 
-    border: 3px solid;
-    border-radius: 4px;
-    color: white;
-}
-
-.schedule-table th {
-    background-color: #1f1f1f;
-    padding: 15px 0;
-    text-align: center;
-    color: white;
-}
-
-.schedule-table td:hover {
-    color: darkgrey; 
-}
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body style="background-image: url('background.png'); background-size: cover;">
-    <header>
-        <h1>Расписание</h1>
+<body>
     </header>
     <nav>
         <a href="home">Главная</a>
