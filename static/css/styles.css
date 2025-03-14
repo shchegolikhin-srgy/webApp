@@ -1,4 +1,4 @@
-/* Общие стили */
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
@@ -43,7 +43,7 @@ main {
     margin: auto;
 }
 
-/* Стили для статей */
+
 article {
     background-color: #1f1f1f;
     border-radius: 10px;
@@ -64,7 +64,7 @@ article p {
     color: white;
 }
 
-/* Стили для форм */
+
 form {
     max-width: 400px;
     margin: 20px auto;
@@ -107,7 +107,7 @@ form button {
     cursor: pointer;
 }
 
-/* Стили для расписания */
+
 .schedule-container {
     max-width: 1000px;
     margin: 0 auto;
@@ -133,7 +133,6 @@ form button {
     color: #bb86fc;
 }
 
-/* Стили для футера */
 footer {
     background-color: #1f1f1f;
     text-align: center;
