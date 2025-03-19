@@ -4,7 +4,7 @@ import psycopg2
 connection =psycopg2.connect(
     dbname = "projectdb",
     user = "postgres",
-    password="postgres",
+    password="32081ABc",
     host="localhost",
     port = "5432"
 )
@@ -47,16 +47,16 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         if not username or not password:
-            return jsonify({"error": "Missing username or password"}), 400
+            return render_template("login.html")
             
         auth_result = auth(username, password)
         
         if auth_result == "admin":
-            return redirect(url_for('admin'))
+            return render_template("admin.html")
         elif auth_result == "authorization completed":
             return render_template("index.html")
         else:
-            return "Нету пользователя"
+            return render_template("login.html")
     return render_template('login.html')
 
 @app.route('/admin')
@@ -76,7 +76,7 @@ def articles():
 
 if __name__ == '__main__':  
     insert_to_db()
-    app.run(debug=True)
+    app.run(debug=True, port = 8081, host = '0.0.0.0')
     
 # CREATE TABLE Users(id SERIAL PRIMARY KEY, username VARCHAR(30), password VARCHAR(20), name VARCHAR(40)); таблица пользователей
     
