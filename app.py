@@ -10,11 +10,14 @@ connection =psycopg2.connect(
 )
 
 class User:
-    def __init__(self, username, role):
+    def __init__(self):
+        self.username = None
+    def setUsername(self, username):
         self.username = username
-        self.role = role
-
+    def getUsername(self):
+        return self.username
 cursor = connection.cursor()
+user = User()
 app = Flask(__name__)
 def auth(username, password):
     print("результат")
@@ -22,7 +25,7 @@ def auth(username, password):
     row = cursor.fetchone()
     if row:
         if row[1] == password:
-            user = User(username, "user")
+            
             return "authorization completed"
         else:
             return "authorization failed: incorrect password"
@@ -52,8 +55,10 @@ def login():
         auth_result = auth(username, password)
         
         if auth_result == "admin":
+            user.setUsername("admin")
             return render_template("admin.html")
         elif auth_result == "authorization completed":
+            user.setUsername(username)
             return render_template("index.html")
         else:
             return render_template("login.html")
@@ -61,7 +66,10 @@ def login():
 
 @app.route('/admin')
 def admin():
-    return render_template('admin.html')
+    if user.getUsername() == "admin":
+        return render_template("admin.html")
+    else:
+        return "Вы не админ"
 @app.route('/calendar')
 def calendar():
     return render_template('calendar.html')
@@ -81,3 +89,4 @@ if __name__ == '__main__':
 # CREATE TABLE Users(id SERIAL PRIMARY KEY, username VARCHAR(30), password VARCHAR(20), name VARCHAR(40)); таблица пользователей
     
 # CREATE TABLE Posts(id SERIAL PRIMARY KEY, name VARCHAR(30), text VARCHAR(2000), author VARCHAR(30));- таблица постов
+
