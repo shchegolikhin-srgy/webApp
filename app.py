@@ -4,7 +4,7 @@ import psycopg2
 connection =psycopg2.connect(
     dbname = "projectdb",
     user = "postgres",
-    password="32081ABc",
+    password="postgres",
     host="localhost",
     port = "5432"
 )
@@ -31,12 +31,8 @@ def auth(username, password):
             return "authorization failed: incorrect password"
     else:
         return "the user does not exist"
-text = "Loren ipsum"
-def insert_to_db():
+
     
-    cursor.execute("INSERT INTO Posts(name, text, author) VALUES(%s, %s, %s);", ("Пост1", text, "admin"))
-    cursor.execute("SELECT * FROM Posts;")
-    rows = cursor.fetchall()
     
 @app.route('/home')
 def home():
@@ -64,27 +60,33 @@ def login():
             return render_template("login.html")
     return render_template('login.html')
 
-@app.route('/admin')
+@app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    if user.getUsername() == "admin":
-        return render_template("admin.html")
+    if request.method == 'POST':
+        header = request.form.get('title')
+        text = request.form.get('content')
+        cursor.execute("INSERT INTO Posts(name, text, author) VALUES(%s, %s, %s);", (header, text, "admin"))
     else:
-        return "Вы не админ"
+        if user.getUsername() == "admin":
+            return render_template("admin.html")
+        else:
+            return "Вы не админ"
+
 @app.route('/calendar')
 def calendar():
     return render_template('calendar.html')
 @app.route('/articles')
 def articles():
     name = "post 1"
-    cursor.execute("SELECT name, text, author FROM Posts WHERE name ='%s';" % (name))
+    cursor.execute("SELECT name, text, author FROM Posts WHERE text LIKE '%s%';")
     row = cursor.fetchone()
+    
     return render_template('articles.html', text = row[1], header = row[0])
 
 # http://127.0.0.1:5000/home
 
 if __name__ == '__main__':  
-    insert_to_db()
-    app.run(debug=True, port = 8081, host = '0.0.0.0')
+    app.run(debug=True,  host = '0.0.0.0')
     
 # CREATE TABLE Users(id SERIAL PRIMARY KEY, username VARCHAR(30), password VARCHAR(20), name VARCHAR(40)); таблица пользователей
     

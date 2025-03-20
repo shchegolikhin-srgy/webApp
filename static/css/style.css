@@ -150,3 +150,11 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+.admin-title{
+    text-align: center;
+}textarea{
+    width: 100%;
+}
+textarea{
+    background-color: #333;
+}

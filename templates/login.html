@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Авторизация</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">    
 </head>
-<body >
+<body style="background-image: url('background.png'); background-size: cover;">
     <header>
         <h1>Авторизация</h1>
     </header>
+
     <nav>
         <a href="home">Главная</a>
     </nav>
+
     <main>
         <form method="post">
             <h2>Вход</h2>
             <div>
                 <label for="username">Имя пользователя</label>
-                <input type="text" name="username" placeholder="Введите имя пользователя">
+                <input type="text" name ="username" placeholder="Введите имя пользователя">
             </div>
             <div>
                 <label for="password">Пароль</label>
@@ -26,9 +28,6 @@
             </div>
             <button type="submit">Войти</button>
         </form>
-        <div class="admin-link">
-            <a href="#">Войти как администратор</a>
-        </div>
     </main>
 </body>
 </html>

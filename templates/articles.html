@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Просмотр статьи</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
+<body style="background-image: url('background.png'); background-size: cover;">
     <header>
         <h1>Статьи</h1>
     </header>
+
     <nav>
         <a href="home">Главная</a>
     </nav>
@@ -20,6 +21,5 @@
             <p>{{text}}</p>   
         </article>
     </main>
-
 </body>
 </html>

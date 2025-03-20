@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Статьи</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 <body>
     <header>
@@ -13,39 +14,38 @@
     <nav>
         <a href="home">Главная</a>
         <a href="calendar">Расписание</a>
-        <a href="chat">Чат лицея</a>
-        <a href="sport">Спортивные мероприятия</a>
-        <a href="science">Наука в лицее</a>
+        <a href="admin">Войти как админ</a>
         <a href="login">Авторизация</a>
     </nav>
     <main>
-        <article>
+        <article class="main">
             <h2>Заголовок статьи 1</h2>
-            <a href="articles">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <a href="articles"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fermentum velit leo, at volutpat est scelerisque sed.</p>
             </a>
         </article>
 
-        <article>
+        <article class="main">
             <h2>Заголовок статьи 2</h2>
             <a href="articles">
             <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur tincidunt non nisl sit amet porttitor.</p>
             </a>
         </article>
 
-        <article>
+        <article class="main">
             <h2>Заголовок статьи 3</h2>
             <a href="articles">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fermentum velit leo, at volutpat est scelerisque sed.</p>
             </a>
         </article>
 
-        <article>
+        <article class="main">
             <h2>Заголовок статьи 4</h2>
             <a href="articles">
             <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur tincidunt non nisl sit amet porttitor.</p></a>
             </a>
         </article>
+
     </main>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>

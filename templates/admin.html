@@ -3,37 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1523</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Админка Новостного Портала</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    <header>
-        <h1>Новостной Сайт</h1>
-    </header>
+<body class ="admin">
+   
     <nav>
         <a href="home">Главная</a>
+        <a href="calendar">Расписание</a>
+
+        <a href="login">Авторизация</a>
     </nav>
-    <main>
-        <h1 style="text-align: center;">Здравствуйте, "Админ"!</h1>
-        <article>
-            <p onclick="showAddNews()">Добавить новость</p>
-        </article>
-        <form action="http://localhost:3000/submit" method="post" id="addNewsForm">
-            <input type="text" placeholder="Введите пост" required id="story">
-        </form>
-        <h2>Написанные новости</h2>
-        <article>
-            <h2>Заголовок новости 2</h2>
-            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur tincidunt non nisl sit amet porttitor. Vivamus eleifend, lectus in facilisis pretium, odio nunc vestibulum sapien, ut consequat magna mauris non risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin risus erat, egestas vel mollis ut, sagittis eget turpis. Aenean nec porta mauris. Mauris ornare purus eget lorem efficitur cursus. Aenean auctor ut turpis quis mollis. Sed efficitur quam id tortor pellentesque fermentum. Donec lacinia rhoncus vulputate. Ut venenatis porttitor massa, quis semper diam faucibus vel. Vivamus eu purus augue. Nullam eget ex malesuada, ultricies tortor laoreet, dictum lectus.</p>
-        </article>
-        <article>
-            <h2>Заголовок новости 3</h2>
-            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam ut sem non erat convallis egestas nec non erat. Ut a mauris posuere, ornare neque in, hendrerit ex. Mauris et dui aliquam, dignissim ligula at, tincidunt elit. Ut quis velit tincidunt, malesuada odio at, lobortis dui. Sed feugiat id purus et tincidunt. Mauris eget metus tellus.</p>
-        </article>
-    </main>
-    <footer>
-        1523
-    </footer>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+   
+    <div class="admin-panel">
+        <h1 class="admin-title">Создание нового поста</h1>
+        <main class="admin-main">
+            <form id="postForm" class="admin-form" method="post">
+                <label for="title" class="form-label">Заголовок:</label>
+                <input type="text" id="title" name="title" required class="form-input">
+
+                <label for="content" class="form-label">Текст поста:</label>
+                <textarea id="content" name="content" rows="10" required class="form-textarea"></textarea>
+
+                <button type="submit" class="form-button">Опубликовать</button>
+            </form>
+        </main>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
