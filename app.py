@@ -1,12 +1,15 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, redirect
 import psycopg2
+from dotenv import load_dotenv
+from os import getenv
 
+load_dotenv()
 connection =psycopg2.connect(
-    dbname = "projectdb",
-    user = "postgres",
-    password="postgres",
-    host="localhost",
-    port = "5432"
+    dbname= getenv("DB_NAME"),
+    port = getenv("DB_PORT"),
+    user = getenv("DB_USER"),
+    password = getenv("DB_PASS"),
+    host = getenv("DB_HOST")
 )
 
 class User:
@@ -32,8 +35,6 @@ def auth(username, password):
     else:
         return "the user does not exist"
 
-    
-    
 @app.route('/home')
 def home():
     return render_template('index.html')
@@ -70,25 +71,18 @@ def admin():
         if user.getUsername() == "admin":
             return render_template("admin.html")
         else:
-            return "Вы не админ"
+            return redirect('/login')
 
 @app.route('/calendar')
 def calendar():
     return render_template('calendar.html')
 @app.route('/articles')
 def articles():
-    name = "post 1"
-    cursor.execute("SELECT name, text, author FROM Posts WHERE text LIKE '%s%';")
-    row = cursor.fetchone()
-    
-    return render_template('articles.html', text = row[1], header = row[0])
+    return render_template('articles.html')
 
 # http://127.0.0.1:5000/home
 
 if __name__ == '__main__':  
     app.run(debug=True,  host = '0.0.0.0')
-    
-# CREATE TABLE Users(id SERIAL PRIMARY KEY, username VARCHAR(30), password VARCHAR(20), name VARCHAR(40)); таблица пользователей
-    
-# CREATE TABLE Posts(id SERIAL PRIMARY KEY, name VARCHAR(30), text VARCHAR(2000), author VARCHAR(30));- таблица постов
+
 

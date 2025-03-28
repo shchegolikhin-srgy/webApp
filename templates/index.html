@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Статьи</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
-<body>
+<body  data-page="home">
     <header>
         <h1>Статьи</h1>
     </header>
@@ -18,34 +17,7 @@
         <a href="login">Авторизация</a>
     </nav>
     <main>
-        <article class="main">
-            <h2>Заголовок статьи 1</h2>
-            <a href="articles"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fermentum velit leo, at volutpat est scelerisque sed.</p>
-            </a>
-        </article>
-
-        <article class="main">
-            <h2>Заголовок статьи 2</h2>
-            <a href="articles">
-            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur tincidunt non nisl sit amet porttitor.</p>
-            </a>
-        </article>
-
-        <article class="main">
-            <h2>Заголовок статьи 3</h2>
-            <a href="articles">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fermentum velit leo, at volutpat est scelerisque sed.</p>
-            </a>
-        </article>
-
-        <article class="main">
-            <h2>Заголовок статьи 4</h2>
-            <a href="articles">
-            <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur tincidunt non nisl sit amet porttitor.</p></a>
-            </a>
-        </article>
-
     </main>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

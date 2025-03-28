@@ -6,12 +6,15 @@
     <title>Расписание уроков</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body style="background-image: url('background.png'); background-size: cover;">
+<body  data-page="calendar">
     <header>
         <h1>Расписание</h1>
     </header>
     <nav>
         <a href="home">Главная</a>
+        <a href="calendar">Расписание</a>
+        <a href="admin">Войти как админ</a>
+        <a href="login">Авторизация</a>
     </nav>
     <div class="schedule-container">
         <h2>Расписание уроков</h2>
@@ -238,5 +241,6 @@
             </tbody>
         </table>
     </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

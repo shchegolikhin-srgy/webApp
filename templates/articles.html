@@ -6,7 +6,7 @@
     <title>Просмотр статьи</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body style="background-image: url('background.png'); background-size: cover;">
+<body  data-page="articles">
     <header>
         <h1>Статьи</h1>
     </header>
@@ -16,10 +16,8 @@
     </nav>
 
     <main>
-        <article>
-            <h2>{{header}}</h2>
-            <p>{{text}}</p>   
-        </article>
+        
     </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

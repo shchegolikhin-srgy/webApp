@@ -6,7 +6,7 @@
     <title>Авторизация</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">    
 </head>
-<body style="background-image: url('background.png'); background-size: cover;">
+<body data-page="login">
     <header>
         <h1>Авторизация</h1>
     </header>
@@ -29,5 +29,6 @@
             <button type="submit">Войти</button>
         </form>
     </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
