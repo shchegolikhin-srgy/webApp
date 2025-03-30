@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body class ="admin"  data-page="admin">
-   
+    
+    <header>
+        <h1>Создание публикаций</h1>
+    </header>
     <nav>
         <a href="home">Главная</a>
         <a href="calendar">Расписание</a>
@@ -17,17 +20,16 @@
 
    
     <div class="admin-panel">
-        <h1 class="admin-title">Создание нового поста</h1>
         <main class="admin-main">
-            <form id="postForm" class="admin-form">
+            <div id="postForm" class="admin-form">
                 <label for="title" class="form-label">Заголовок:</label>
-                <input type="text" id="title" name="title" required class="form-input">
+                <input type="text" id="title" name="title" >
 
                 <label for="content" class="form-label">Текст поста:</label>
-                <textarea id="content" name="content" rows="10" required class="form-textarea"></textarea>
+                <textarea id="content" name="content" rows="10" ></textarea>
 
-                <button type="submit" class="form-button" onclick="">Опубликовать</button>
-            </form>
+                <button class="form-button" onclick="addContent()">Опубликовать</button>
+            </div>
         </main>
         <div id="message" class="message"></div>
     </div>

@@ -1,11 +1,11 @@
 :root {
-    --primary: #8E44AD;       
-    --secondary: #D2B4DE;    
-    --accent: #F1C40F;      
-    --background: #FDF7FF;    
-    --text: #34495E;          
-    --muted: #7F8C8D;         
-    --border: #E8DAEF;       
+    --primary: #8E44AD;       /* Глубокий фиолетовый */
+    --secondary: #D2B4DE;     /* Светло-лавандовый */
+    --accent: #F1C40F;        /* Золотисто-желтый */
+    --background: #FDF7FF;    /* Мягкий светло-фиолетовый фон */
+    --text: #34495E;          /* Темно-синий текст */
+    --muted: #7F8C8D;         /* Приглушенный серый */
+    --border: #E8DAEF;        /* Светлая фиолетовая граница */
 }
 
 body {
